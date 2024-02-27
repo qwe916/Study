@@ -1,9 +1,13 @@
 package com.design.design_pattern_study.decorator_pattern;
 
+import com.design.design_pattern_study.decorator_pattern.component.Coffee;
 import com.design.design_pattern_study.decorator_pattern.component.Component;
 import com.design.design_pattern_study.decorator_pattern.component.ConcreteComponent;
+import com.design.design_pattern_study.decorator_pattern.component.Latte;
 import com.design.design_pattern_study.decorator_pattern.decorator.ConcreteDecorator1;
 import com.design.design_pattern_study.decorator_pattern.decorator.ConcreteDecorator2;
+import com.design.design_pattern_study.decorator_pattern.decorator.CreamTopping;
+import com.design.design_pattern_study.decorator_pattern.decorator.RecycleCup;
 import org.junit.jupiter.api.Test;
 
 class DecoratorPatternTest {
@@ -27,4 +31,19 @@ class DecoratorPatternTest {
         concreteDecorator2And1.execute();
     }
 
+    @Test
+    void 커피_데코레터_패턴_적용(){
+        Coffee latte = new Latte();
+
+        Coffee creamToppingLatte = new CreamTopping(latte);
+        creamToppingLatte.makeCoffee();
+        System.out.println();
+
+        Coffee recycleCupLatte = new RecycleCup(latte);
+        recycleCupLatte.makeCoffee();
+        System.out.println();
+
+        Coffee creamAndChocolateToppingLatte = new CreamTopping(new RecycleCup(latte));
+        creamAndChocolateToppingLatte.makeCoffee();
+    }
 }
