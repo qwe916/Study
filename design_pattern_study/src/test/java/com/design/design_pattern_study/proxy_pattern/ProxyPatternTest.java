@@ -1,6 +1,7 @@
 package com.design.design_pattern_study.proxy_pattern;
 
 import com.design.design_pattern_study.proxy_pattern.client.Client;
+import com.design.design_pattern_study.proxy_pattern.proxy.ProtectionProxy;
 import com.design.design_pattern_study.proxy_pattern.proxy.Proxy;
 import com.design.design_pattern_study.proxy_pattern.proxy.VirtualProxy;
 import com.design.design_pattern_study.proxy_pattern.subject.RealSubject;
@@ -22,4 +23,20 @@ class ProxyPatternTest {
         Client client = new Client(virtualProxy);
         client.execute();
     }
+
+@Test
+void 보호_프록시_테스트_접근_허용(){
+    RealSubject realSubject = new RealSubject();
+    ProtectionProxy protectionProxy = new ProtectionProxy(realSubject, true);
+    Client client = new Client(protectionProxy);
+    client.execute();
+}
+
+@Test
+void 보호_프록시_테스트_접근_거부(){
+    RealSubject realSubject = new RealSubject();
+    ProtectionProxy protectionProxy = new ProtectionProxy(realSubject, false);
+    Client client = new Client(protectionProxy);
+    client.execute();
+}
 }
