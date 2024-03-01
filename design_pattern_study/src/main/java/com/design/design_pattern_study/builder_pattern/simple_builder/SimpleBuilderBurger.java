@@ -6,15 +6,15 @@ public class SimpleBuilderBurger {
     private boolean cheese;
     private boolean tomato;
 
-    public SimpleBuilderBurger(int bun, int patty, boolean cheese, boolean tomato) {
-        this.bun = bun;
-        this.patty = patty;
-        this.cheese = cheese;
-        this.tomato = tomato;
-    }
-
     public static SimpleBuilderBurger.Builder builder() {
         return new SimpleBuilderBurger.Builder();
+    }
+
+    private SimpleBuilderBurger(Builder builder) {
+        this.bun = builder.bun;
+        this.patty = builder.patty;
+        this.cheese = builder.cheese;
+        this.tomato = builder.tomato;
     }
 
     public static class Builder {
@@ -44,7 +44,7 @@ public class SimpleBuilderBurger {
         }
 
         public SimpleBuilderBurger build() {
-            return new SimpleBuilderBurger(bun, patty, cheese, tomato);
+            return new SimpleBuilderBurger(this);
         }
     }
 }
