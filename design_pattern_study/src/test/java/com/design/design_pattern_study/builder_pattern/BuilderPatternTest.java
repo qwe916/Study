@@ -3,6 +3,7 @@ package com.design.design_pattern_study.builder_pattern;
 import com.design.design_pattern_study.builder_pattern.builder.Burger;
 import com.design.design_pattern_study.builder_pattern.builder.BurgerBuilder;
 import com.design.design_pattern_study.builder_pattern.javabean_pattern.JavaBeanBurger;
+import com.design.design_pattern_study.builder_pattern.simple_builder.SimpleBuilderBurger;
 import com.design.design_pattern_study.builder_pattern.telescope.TelescopeBurger;
 import org.junit.jupiter.api.Test;
 
@@ -35,6 +36,16 @@ class BuilderPatternTest {
 
         //필수 인자 + 선택적 인자 전달
         Burger burger1 = new BurgerBuilder()
+                .bun(1)
+                .patty(2)
+                .cheese(true)
+                .tomato(true)
+                .build();
+    }
+
+    @Test
+    void 심플_빌더_패턴_테스트(){
+        SimpleBuilderBurger burger = SimpleBuilderBurger.builder()
                 .bun(1)
                 .patty(2)
                 .cheese(true)
