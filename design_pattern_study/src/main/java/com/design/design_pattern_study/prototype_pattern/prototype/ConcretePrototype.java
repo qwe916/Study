@@ -1,5 +1,7 @@
 package com.design.design_pattern_study.prototype_pattern.prototype;
 
+import java.util.Objects;
+
 public class ConcretePrototype implements Prototype {
     private String field;
 
@@ -18,14 +20,14 @@ public class ConcretePrototype implements Prototype {
 
     @Override
     public int hashCode() {
-        return super.hashCode();
+        return Objects.hash(field);
     }
 
     @Override
     public boolean equals(Object obj) {
-        if(!(obj instanceof ConcretePrototype prototype) || obj.hashCode() != this.hashCode()) {
-            return false;
-        }
-        return prototype.field.equals(this.field);
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        ConcretePrototype concretePrototype = (ConcretePrototype) obj;
+        return Objects.equals(field, concretePrototype.field);
     }
 }
