@@ -1,4 +1,4 @@
-package com.design.data_structure.stack;
+package com.data_structure.stack;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;

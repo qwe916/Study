@@ -1,4 +1,4 @@
-package com.design.data_structure.queue;
+package com.data_structure.queue;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;

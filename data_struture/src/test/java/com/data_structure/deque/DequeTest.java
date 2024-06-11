@@ -1,4 +1,4 @@
-package com.design.data_structure.deque;
+package com.data_structure.deque;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
