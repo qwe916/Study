@@ -10,7 +10,6 @@ import java.sql.SQLException;
 
 @Slf4j
 public class ImageDaoWithJDBC {
-
     public Image findById(String imageId) throws SQLException {
         String sql = "select * from image where id = ?";
 
@@ -127,7 +126,15 @@ public class ImageDaoWithJDBC {
     }
 
     private void close(Connection connection, PreparedStatement preparedStatement, ResultSet resultSet) {
-        if (preparedStatement != null) { // 오류 발생시 connection을 닫을 수 없기 때문에 null 검사 후 try-catch로 잡아서 connection도 닫아줘야함
+        if (resultSet != null) {
+            try {
+                resultSet.close();
+            } catch (SQLException e) {
+                log.error("error", e);
+            }
+        }
+
+        if (preparedStatement != null) {
             try {
                 preparedStatement.close();
             } catch (SQLException e) {

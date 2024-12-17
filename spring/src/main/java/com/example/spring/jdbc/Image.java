@@ -1,13 +1,12 @@
 package com.example.spring.jdbc;
 
-import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.util.Objects;
 
 @Getter
-@Setter@Data
+@Setter
 public class Image {
     private int id;
     private String url;
