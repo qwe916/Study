@@ -2,12 +2,12 @@ package com.example.spring.AOP;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-public class ImageUpdateService {
+public class ImageUpdateServiceAOP {
     @Autowired
-    private ImageDao imageDao;
+    private ImageDaoAOP imageDaoAOP;
 
     public void updateImage(Image image) {
-        Image foundImage = imageDao.selectByName(image.getName());
+        Image foundImage = imageDaoAOP.selectByName(image.getName());
 
         if (foundImage == null) {
             throw new NotFoundImageException();
@@ -15,7 +15,7 @@ public class ImageUpdateService {
 
         foundImage.setUrl(image.getUrl());
 
-        imageDao.updateImage(foundImage);
+        imageDaoAOP.updateImage(foundImage);
 
         System.out.println("이미지 수정 성공!");
     }

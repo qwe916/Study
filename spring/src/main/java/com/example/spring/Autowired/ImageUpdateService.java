@@ -4,10 +4,10 @@ import jakarta.annotation.Nullable;
 import org.springframework.beans.factory.annotation.Autowired;
 
 public class ImageUpdateService {
-    private ImageDao imageDao;
+    private ImageDaoAutowired imageDaoAutowired;
 
     public void updateImage(String name, String url) {
-        Image image = imageDao.selectByName(name);
+        Image image = imageDaoAutowired.selectByName(name);
 
         if (image == null) {
             throw new NotFoundImageException();
@@ -15,15 +15,15 @@ public class ImageUpdateService {
 
         image.setUrl(url);
 
-        imageDao.updateImage(image);
+        imageDaoAutowired.updateImage(image);
     }
 
     public ImageUpdateService() {
-        this.imageDao = new ImageDao();
+        this.imageDaoAutowired = new ImageDaoAutowired();
     }
 
     @Autowired
-    public void setImageDao(@Nullable  ImageDao imageDao) {
-        this.imageDao = imageDao;
+    public void setImageDao(@Nullable ImageDaoAutowired imageDaoAutowired) {
+        this.imageDaoAutowired = imageDaoAutowired;
     }
 }

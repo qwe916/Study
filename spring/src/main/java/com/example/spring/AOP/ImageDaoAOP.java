@@ -1,8 +1,8 @@
-package com.example.spring.DI;
+package com.example.spring.AOP;
 
 import java.util.HashMap;
 
-public class ImageDao {
+public class ImageDaoAOP {
     HashMap<String, Image> map = new HashMap<>();
 
     public Image selectByName(String name) {
