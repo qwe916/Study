@@ -12,38 +12,38 @@ public class InjectionTest {
 
         Image image = new Image("name", "URL");
 
-        ImageRegisterService imageRegisterService = assembler.getImageRegisterService();
+        ImageRegisterServiceDI imageRegisterServiceDI = assembler.getImageRegisterService();
 
-        imageRegisterService.registerImage(image);
+        imageRegisterServiceDI.registerImage(image);
 
-        ImageUpdateService imageUpdateService = assembler.getImageUpdateService();
+        ImageUpdateServiceDI imageUpdateServiceDI = assembler.getImageUpdateService();
 
-        imageUpdateService.updateImage(image.getName(), "new URL");
+        imageUpdateServiceDI.updateImage(image.getName(), "new URL");
 
-        ImageLoadingService imageLoadingService = assembler.getImageLoadingService();
+        ImageLoadingServiceDI imageLoadingServiceDI = assembler.getImageLoadingService();
 
-        Image loadImage = imageLoadingService.loadingImage(image.getName());
+        Image loadImage = imageLoadingServiceDI.loadingImage(image.getName());
 
         Assertions.assertThat(loadImage.getUrl()).isEqualTo("new URL");
     }
 
     @Test
     void runWithSpring() {
-        AnnotationConfigApplicationContext appCtx = new AnnotationConfigApplicationContext(AppCtx.class);
+        AnnotationConfigApplicationContext appCtx = new AnnotationConfigApplicationContext(AppCtxDI.class);
 
-        ImageRegisterService imageRegisterService = appCtx.getBean("imageRegisterService", ImageRegisterService.class);
+        ImageRegisterServiceDI imageRegisterServiceDI = appCtx.getBean("imageRegisterServiceAOP", ImageRegisterServiceDI.class);
 
         Image image = new Image("name", "URL");
 
-        imageRegisterService.registerImage(image);
+        imageRegisterServiceDI.registerImage(image);
 
-        ImageUpdateService imageUpdateService = appCtx.getBean("imageUpdateService", ImageUpdateService.class);
+        ImageUpdateServiceDI imageUpdateServiceDI = appCtx.getBean("imageUpdateServiceAOP", ImageUpdateServiceDI.class);
 
-        imageUpdateService.updateImage(image.getName(), "new URL");
+        imageUpdateServiceDI.updateImage(image.getName(), "new URL");
 
-        ImageLoadingService imageLoadingService = appCtx.getBean("imageLoadingService", ImageLoadingService.class);
+        ImageLoadingServiceDI imageLoadingServiceDI = appCtx.getBean("imageLoadingServiceDI", ImageLoadingServiceDI.class);
 
-        Image loadImage = imageLoadingService.loadingImage(image.getName());
+        Image loadImage = imageLoadingServiceDI.loadingImage(image.getName());
 
         Assertions.assertThat(loadImage.getUrl()).isEqualTo("new URL");
     }

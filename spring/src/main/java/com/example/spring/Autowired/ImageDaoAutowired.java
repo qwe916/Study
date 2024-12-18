@@ -1,8 +1,8 @@
-package com.example.spring.AOP;
+package com.example.spring.Autowired;
 
 import java.util.HashMap;
 
-public class ImageDao {
+public class ImageDaoAutowired {
     HashMap<String, Image> map = new HashMap<>();
 
     public Image selectByName(String name) {

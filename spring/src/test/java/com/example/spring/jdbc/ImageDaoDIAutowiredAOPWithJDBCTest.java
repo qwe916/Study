@@ -7,7 +7,7 @@ import java.sql.SQLException;
 
 import static org.assertj.core.api.Assertions.*;
 
-class ImageDaoWithJDBCTest {
+class ImageDaoDIAutowiredAOPWithJDBCTest {
     ImageDaoWithJDBC imageDaoWithJDBC = new ImageDaoWithJDBC();
     @AfterEach
     void truncateImageTable() throws SQLException {

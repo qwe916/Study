@@ -2,12 +2,12 @@ package com.example.spring.AOP;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-public class ImageRegisterService {
+public class ImageRegisterServiceAOP {
     @Autowired
-    private ImageDao imageDao;
+    private ImageDaoAOP imageDaoAOP;
 
     public void registerImage(Image image) {
-        imageDao.insertImage(image);
+        imageDaoAOP.insertImage(image);
         System.out.println("이미지 등록 성공!");
     }
 }

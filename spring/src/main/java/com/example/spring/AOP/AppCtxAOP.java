@@ -7,10 +7,10 @@ import org.springframework.context.annotation.EnableAspectJAutoProxy;
 
 @Configuration
 @EnableAspectJAutoProxy
-public class AppCtx {
+public class AppCtxAOP {
     @Bean
-    public ImageDao imageDao() {
-        return new ImageDao();
+    public ImageDaoAOP imageDaoAOP() {
+        return new ImageDaoAOP();
     }
 
     @Bean
@@ -19,13 +19,13 @@ public class AppCtx {
     }
 
     @Bean
-    public ImageRegisterService imageRegisterService() {
-        return new ImageRegisterService();
+    public ImageRegisterServiceAOP imageRegisterServiceAOP() {
+        return new ImageRegisterServiceAOP();
     }
 
     @Bean
-    public ImageUpdateService imageUpdateService() {
-        return new ImageUpdateService();
+    public ImageUpdateServiceAOP imageUpdateServiceAOP() {
+        return new ImageUpdateServiceAOP();
     }
 
     @Bean

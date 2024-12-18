@@ -7,7 +7,7 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 class LifeCycleTest {
     @Test
     void 빈_라이프사이클_테스트() {
-        AnnotationConfigApplicationContext appCtx = new AnnotationConfigApplicationContext(AppCtx.class,Dependency.class);
+        AnnotationConfigApplicationContext appCtx = new AnnotationConfigApplicationContext(AppCtxLifeCycle.class,Dependency.class);
 
         appCtx.close();
     }
@@ -21,7 +21,7 @@ class LifeCycleTest {
 
     @Test
     void 초기화된_빈_객체는_싱글톤이다() {
-        AnnotationConfigApplicationContext appCtx = new AnnotationConfigApplicationContext(AppCtx.class, Dependency.class);
+        AnnotationConfigApplicationContext appCtx = new AnnotationConfigApplicationContext(AppCtxLifeCycle.class, Dependency.class);
 
         Client client1 = appCtx.getBean("client", Client.class);
         Client client2 = appCtx.getBean("client", Client.class);

@@ -5,18 +5,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.util.Optional;
 
 public class ImageRegisterService {
-    private ImageDao imageDao;
+    private ImageDaoAutowired imageDaoAutowired;
 
     public void registerImage(Image image) {
-        imageDao.insertImage(image);
+        imageDaoAutowired.insertImage(image);
     }
 
     @Autowired
-    public void setImageDao(Optional<ImageDao> imageDaoOptional) {
+    public void setImageDao(Optional<ImageDaoAutowired> imageDaoOptional) {
         if (imageDaoOptional.isPresent()) {
-            this.imageDao = imageDaoOptional.get();
+            this.imageDaoAutowired = imageDaoOptional.get();
         } else {
-            imageDao = null;
+            imageDaoAutowired = null;
         }
     }
 }

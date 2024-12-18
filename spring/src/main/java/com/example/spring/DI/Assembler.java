@@ -1,27 +1,27 @@
 package com.example.spring.DI;
 
 public class Assembler {
-    private ImageRegisterService imageRegisterService;
-    private ImageUpdateService imageUpdateService;
-    private ImageLoadingService imageLoadingService;
-    private ImageDao imageDao;
+    private ImageRegisterServiceDI imageRegisterServiceDI;
+    private ImageUpdateServiceDI imageUpdateServiceDI;
+    private ImageLoadingServiceDI imageLoadingServiceDI;
+    private ImageDaoDI imageDaoDI;
 
     public Assembler() {
-        imageDao = new ImageDao();
-        this.imageRegisterService = new ImageRegisterService(imageDao);
-        this.imageUpdateService = new ImageUpdateService(imageDao);
-        this.imageLoadingService = new ImageLoadingService(imageDao);
+        imageDaoDI = new ImageDaoDI();
+        this.imageRegisterServiceDI = new ImageRegisterServiceDI(imageDaoDI);
+        this.imageUpdateServiceDI = new ImageUpdateServiceDI(imageDaoDI);
+        this.imageLoadingServiceDI = new ImageLoadingServiceDI(imageDaoDI);
     }
 
-    public ImageRegisterService getImageRegisterService() {
-        return imageRegisterService;
+    public ImageRegisterServiceDI getImageRegisterService() {
+        return imageRegisterServiceDI;
     }
 
-    public ImageUpdateService getImageUpdateService() {
-        return imageUpdateService;
+    public ImageUpdateServiceDI getImageUpdateService() {
+        return imageUpdateServiceDI;
     }
 
-    public ImageLoadingService getImageLoadingService() {
-        return imageLoadingService;
+    public ImageLoadingServiceDI getImageLoadingService() {
+        return imageLoadingServiceDI;
     }
 }

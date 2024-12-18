@@ -4,10 +4,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 public class ImageLoadingService {
     @Autowired
-    private ImageDao imageDao;
+    private ImageDaoAutowired imageDaoAutowired;
 
     public Image loadingImage(String name) {
-        Image image = imageDao.selectByName(name);
+        Image image = imageDaoAutowired.selectByName(name);
 
         if (image == null) {
             throw new NotFoundImageException();
