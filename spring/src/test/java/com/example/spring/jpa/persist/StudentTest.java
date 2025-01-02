@@ -1,4 +1,4 @@
-package com.example.spring.jpa.entity;
+package com.example.spring.jpa.persist;
 
 import jakarta.persistence.*;
 import org.junit.jupiter.api.AfterEach;
